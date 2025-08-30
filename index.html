@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONTIV - Digital Transformation</title>
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css');
+    </style>
+    <title>Ontiv Tech</title>
     <style>
         :root {
             --primary-bg: #0a0a0a;
@@ -100,8 +103,24 @@
             position: relative;
         }
 
+        .logo-icon img {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px var(--accent-glow);
+            position: relative;
+        }
         .logo-icon::before {
-            content: 'Ω';
+            /* content: '<img src="ontiv_tech.png" alt="ONTIV Technologies">'; */
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .logo-icon img::before {
             color: white;
             font-size: 1.5rem;
             font-weight: bold;
@@ -372,6 +391,9 @@
             margin-bottom: 1.5rem;
             font-size: 1.8rem;
         }
+        .service-icon i {
+            color: white;
+        }
 
         .service-card h3 {
             font-size: 1.8rem;
@@ -555,16 +577,18 @@
     <nav>
         <div class="nav-container">
             <div class="logo">
-                <div class="logo-icon"></div>
-                <span>ONTIV</span>
+                <div class="logo-icon"><img src="ontiv_tech.png" alt="ONTIV Technologies"></div>
+                <span>ONTIV Technologies</span>
             </div>
             <ul class="nav-links">
-                <li><a href="#nexus" data-en="The Nexus" data-es="El Nexo">The Nexus</a></li>
-                <li><a href="#journey" data-en="The Journey" data-es="El Viaje">The Journey</a></li>
-                <li><a href="#vanguard" data-en="The Vanguard" data-es="La Vanguardia">The Vanguard</a></li>
-                <li><a href="#blueprint" data-en="The Blueprint" data-es="El Plano">The Blueprint</a></li>
+                <li><a href="#nexus" data-en="The Nexus" data-es="El Núcleo">The Nexus</a></li>
+                <!-- <li><a href="#journey" data-en="The Journey" data-es="El Viaje">The Journey</a></li>
+                <li><a href="#vanguard" data-en="The Vanguard" data-es="La Vanguardia">The Vanguard</a></li> -->
+                <li><a href="#blueprint" data-en="The Blueprint" data-es="La Estrategia">The Blueprint</a></li>
                 <li><a href="#portfolio" data-en="Portfolio" data-es="Portafolio">Portfolio</a></li>
-                <li><a href="#launchpad" data-en="The Launchpad" data-es="La Plataforma">The Launchpad</a></li>
+                <li><a href="#launchpad" data-en="The Launchpad" data-es="Punto de Partida">The Launchpad</a></li>
+                <li><a href="mailto:ricardo@ontiv.tech">✉️</a></li>
+                <li><a href="tel:+526145280595"><i class="fa-solid fa-phone"></i></a></li>             
             </ul>
             <div style="display: flex; gap: 1rem;">
                 <button class="theme-toggle" onclick="toggleLanguage()">
@@ -583,12 +607,12 @@
         <!-- The Nexus (Homepage) -->
         <section id="nexus" class="hero">
             <div class="hero-content fade-in">
-                <h1 data-en="The Nexus" data-es="El Nexo">The Nexus</h1>
-                <p class="hero-subtitle" data-en="Omni Network Transformation for Innovation and Value" data-es="Transformación de Red Omni para Innovación y Valor">Omni Network Transformation for Innovation and Value</p>
+                <h1 data-en="The Nexus" data-es="El Núcleo">The Nexus</h1>
+                <p class="hero-subtitle" data-en="Omni Network Transformation for Innovation and Value" data-es="Transformación de Red holística para Innovación de Valor">Omni Network Transformation for Innovation and Value</p>
                 <p class="hero-description" data-en="Hello. We're here to help you navigate the future of your business. Our name is ONTIV, and we specialize in a simple, yet powerful, philosophy: connecting all the pieces of your business—people, technology, and strategy—to create one seamless ecosystem that works for you." data-es="Hola. Estamos aquí para ayudarte a navegar el futuro de tu negocio. Nuestro nombre es ONTIV, y nos especializamos en una filosofía simple pero poderosa: conectar todas las piezas de tu negocio—personas, tecnología y estrategia—para crear un ecosistema cohesivo que funcione para ti.">
                     Hello. We're here to help you navigate the future of your business. Our name is ONTIV, and we specialize in a simple, yet powerful, philosophy: connecting all the pieces of your business—people, technology, and strategy—to create one seamless ecosystem that works for you.
                 </p>
-                <a href="#blueprint" class="cta-button" data-en="Discover ONTIV" data-es="Descubre ONTIV">Discover ONTIV</a>
+                <a href="#blueprint" class="cta-button" data-en="Discover ONTIV" data-es="Descubre ONTIV">Discover ONTIV Technologies</a>
             </div>
         </section>
 
@@ -629,22 +653,22 @@
         <!-- The Blueprint (How We Work) -->
         <section id="blueprint" class="section">
             <div class="section-header fade-in">
-                <h2 class="section-title" data-en="The Blueprint" data-es="El Plano">The Blueprint</h2>
+                <h2 class="section-title" data-en="The Blueprint" data-es="La Estrategia">The Blueprint</h2>
                 <p class="section-subtitle" data-en="Our approach is simple and direct" data-es="Nuestro enfoque es simple y directo">Our approach is simple and direct</p>
             </div>
             <div class="services-grid">
                 <div class="service-card fade-in">
-                    <div class="service-icon">🎯</div>
+                    <div class="service-icon"><i class="fa-solid fa-bullseye"></i></div>
                     <h3 data-en="Strategic Blueprint" data-es="Plano Estratégico">Strategic Blueprint</h3>
                     <p data-en="We'll start by looking at the big picture. We'll help you craft a clear, actionable plan that puts all the puzzle pieces together before any technology is even considered." data-es="Comenzaremos viendo el panorama general. Te ayudaremos a crear un plan claro y accionable que una todas las piezas del rompecabezas antes de que se considere cualquier tecnología.">We'll start by looking at the big picture. We'll help you craft a clear, actionable plan that puts all the puzzle pieces together before any technology is even considered.</p>
                 </div>
                 <div class="service-card fade-in">
-                    <div class="service-icon">🔍</div>
-                    <h3 data-en="Solution Curation" data-es="Curaduría de Soluciones">Solution Curation</h3>
+                    <div class="service-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    <h3 data-en="Solution Curation" data-es="Soluciones Especializadas">Solution Curation</h3>
                     <p data-en="The market is full of tools. We help you cut through the noise to find and integrate the best-in-class technologies that will genuinely accelerate your goals." data-es="El mercado está lleno de herramientas. Te ayudamos a cortar el ruido para encontrar e integrar las mejores tecnologías de su clase que realmente acelerarán tus objetivos.">The market is full of tools. We help you cut through the noise to find and integrate the best-in-class technologies that will genuinely accelerate your goals.</p>
                 </div>
                 <div class="service-card fade-in">
-                    <div class="service-icon">⚡</div>
+                    <div class="service-icon"><i class="fa-solid fa-bolt"></i></div>
                     <h3 data-en="Custom Builds" data-es="Desarrollos Personalizados">Custom Builds</h3>
                     <p data-en="When a pre-made solution doesn't fit, we're here to design and build something bespoke for you. We don't just deliver a solution; we stay and ensure it works as if it were our own." data-es="Cuando una solución prefabricada no encaja, estamos aquí para diseñar y construir algo a medida para ti. No solo entregamos una solución; nos quedamos y nos aseguramos de que funcione como si fuera nuestra.">When a pre-made solution doesn't fit, we're here to design and build something bespoke for you. We don't just deliver a solution; we stay and ensure it works as if it were our own.</p>
                 </div>
@@ -671,19 +695,22 @@
         <!-- The Launchpad (Contact) -->
         <section id="launchpad" class="section">
             <div class="contact fade-in">
-                <h2 class="section-title" data-en="The Launchpad" data-es="La Plataforma">The Launchpad</h2>
+                <h2 class="section-title" data-en="The Launchpad" data-es="Punto de Partida">The Launchpad</h2>
                 <p class="section-subtitle" data-en="Ready to start the conversation?" data-es="¿Listo para comenzar la conversación?">Ready to start the conversation?</p>
                 <p style="margin-top: 2rem; font-size: 1.2rem; color: var(--text-secondary);" data-en="The first step is always the easiest. Let's connect and talk about your vision." data-es="El primer paso siempre es el más fácil. Conectemos y hablemos sobre tu visión.">
                     The first step is always the easiest. Let's connect and talk about your vision.
                 </p>
                 <div class="contact-info">
                     <div class="contact-item">
-                        <div class="contact-icon">📞</div>
-                        <a href="tel:+1234567890">+1 (234) 567-890</a>
+                        <div class="contact-icon"><a href="tel:+526145280595"><i class="fa-solid fa-phone"></i></a></div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">✉️</div>
-                        <a href="mailto:contact@ontiv.com">contact@ontiv.com</a>
+                        <div class="contact-icon"><a href="mailto:ricardo@ontiv.tech">✉️</a></div>
+                        <a href="mailto:ricardo@ontiv.tech">ricardo@ontiv.tech</a>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><a href="https://www.linkedin.com/in/rick-ont-75364a381"><i class="fa-brands fa-linkedin"></i></a></div>
+                        <a href="https://www.linkedin.com/in/rick-ont-75364a381/">LinkedIn</a>
                     </div>
                 </div>
             </div>
@@ -691,7 +718,7 @@
     </main>
 
     <footer>
-        <p data-en="&copy; 2025 ONTIV. All rights reserved. | Omni Network Transformation for Innovation and Value" data-es="&copy; 2025 ONTIV. Todos los derechos reservados. | Transformación de Red Omni para Innovación y Valor">&copy; 2025 ONTIV. All rights reserved. | Omni Network Transformation for Innovation and Value</p>
+        <p data-en="&copy; 2025 ONTIV. All rights reserved. | Omni Network Transformation for Innovation and Value" data-es="&copy; 2025 ONTIV. Todos los derechos reservados. | Transformación de Red holística para Innovación y Valor">&copy; 2025 ONTIV. All rights reserved. | Omni Network Transformation for Innovation and Value</p>
     </footer>
 
     <script>
