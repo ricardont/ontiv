@@ -589,6 +589,7 @@
                 <li><a href="#launchpad" data-en="The Launchpad" data-es="Punto de Partida">The Launchpad</a></li>
                 <li><a href="mailto:ricardo@ontiv.tech">✉️</a></li>
                 <li><a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1hcj9akc939HAag2nxkFXw7uqIiY1KZ1J7f89hJHvcp8cMawfoF1tu4_JyPWftGouuqRAL53no?gv=true"><i class="fa-solid fa-phone"></i></a></li>             
+                <li><a href="card.html">📄 card</a></li>
             </ul>
             <div style="display: flex; gap: 1rem;">
                 <button class="theme-toggle" onclick="toggleLanguage()">
@@ -727,6 +728,17 @@
     </footer>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const hash = window.location.hash;
+            if (window.location.hash === '#bcard' || window.location.href.includes('#bcard')) {
+                console.log('Business card view activated via URL parameter or hash.');
+                window.location.href = 'card.html';
+
+            }
+            
+        });
+
         let currentLanguage = 'en';
 
         // Language toggle functionality
