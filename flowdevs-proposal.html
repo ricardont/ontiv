@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowDevs Service Management Proposal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: white;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #ecf0f1;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .savings-highlight {
+            color: #27ae60;
+            font-weight: 700;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section h2 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #34495e;
+            border-left: 3px solid #3498db;
+            padding-left: 0.75rem;
+        }
+
+        .stage-flow {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .stage {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            flex: 1;
+            margin: 0 0.25rem;
+            text-align: center;
+        }
+
+        .stage.active {
+            background: #e3f2fd;
+            border-color: #3498db;
+            font-weight: 600;
+        }
+
+        .stage-details {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            margin-top: 0.25rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: white;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.9rem;
+        }
+
+        td {
+            font-size: 0.85rem;
+        }
+
+        .price {
+            font-weight: 700;
+            color: #2c3e50;
+            font-size: 1rem;
+        }
+
+        .savings {
+            color: #27ae60;
+            font-weight: 600;
+        }
+
+        .pricing-table th:first-child {
+            width: 20%;
+        }
+
+        .pricing-table th {
+            text-align: center;
+        }
+
+        .pricing-table td {
+            text-align: center;
+            vertical-align: top;
+        }
+
+        .tier-header {
+            background: #3498db !important;
+            color: white !important;
+        }
+
+        .flow-table {
+            font-size: 0.8rem;
+        }
+
+        .flow-table td {
+            vertical-align: top;
+            padding: 0.5rem;
+        }
+
+        .service-details {
+            display: flex;
+            margin-top: 1rem;
+        }
+
+        .detail-spacer {
+            flex: 1;
+        }
+
+        .stage-content {
+            padding: 0.5rem 0;
+            flex: 1;
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px solid #e9ecef;
+        }
+
+        .stage-content strong {
+            display: block;
+            margin-bottom: 0.25rem;
+            color: #2c3e50;
+        }
+
+        .stage-content ul {
+            list-style: none;
+            margin: 0.25rem 0;
+        }
+
+        .stage-content li {
+            margin: 0.1rem 0;
+            font-size: 0.75rem;
+            color: #7f8c8d;
+        }
+
+        .stage-content li:before {
+            content: "• ";
+            color: #3498db;
+            margin-right: 0.25rem;
+        }
+
+        .notes {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 4px;
+            border-left: 3px solid #f39c12;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+        }
+
+        .recommendation {
+            background: #e8f5e8;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 4px solid #27ae60;
+            margin: 1.5rem 0;
+        }
+
+        .recommendation h3 {
+            color: #27ae60;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .recommendation .why {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .recommendation .details {
+            font-size: 0.9rem;
+            color: #34495e;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #ecf0f1;
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            font-style: italic;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .stage-flow {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .service-details {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .detail-spacer {
+                display: none;
+            }
+            
+            .stage-content {
+                margin: 0;
+            }
+            
+            table {
+                font-size: 0.75rem;
+            }
+            
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1><strong>Service Mgmt Proposal: FlowDevs</strong> | AVG SAVINGS: <span class="savings-highlight">53%</span> of US salary costs</h1>
+    </div>
+
+    <div class="section">
+        <h2>Targeted Stage: Support</h2>
+        
+        <div class="stage-flow">
+            <div class="stage">
+                <strong>Pre-Dev</strong>
+                <div class="stage-details">Planning, Design</div>
+            </div>
+            <div class="stage">
+                <strong>Dev</strong>
+                <div class="stage-details">Building, Testing</div>
+            </div>
+            <div class="stage active">
+                <strong>📍Support</strong>
+                <div class="stage-details">Support, Maintenance</div>
+            </div>
+            <div class="stage">
+                <strong>Optimization</strong>
+                <div class="stage-details">Performance, Scale</div>
+            </div>
+        </div>
+
+        <div class="service-details">
+            <div class="detail-spacer"></div>
+            <div class="detail-spacer"></div>
+            <div class="stage-content">
+                <strong>Essential - 40hrs/month</strong>
+                <ul>
+                    <li>Basic incident response</li>
+                    <li>Business hours only</li>
+                </ul>
+                <strong>Pro - 80hrs/month</strong>
+                <ul>
+                    <li>Proactive monitoring</li>
+                    <li>Extended coverage</li>
+                </ul>
+                <strong>Premium - 160hrs/month</strong>
+                <ul>
+                    <li>Strategic partnership</li>
+                    <li>Near 24/7 support</li>
+                </ul>
+            </div>
+            <div class="detail-spacer"></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Tier Pricing</h2>
+        <table class="pricing-table">
+            <thead>
+                <tr>
+                    <th>Service Tier</th>
+                    <th class="tier-header">Essential</th>
+                    <th class="tier-header">Professional</th>
+                    <th class="tier-header">Premium</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Monthly Price</strong></td>
+                    <td class="price">$4,900</td>
+                    <td class="price">$9,100</td>
+                    <td class="price">$16,800</td>
+                </tr>
+                <tr>
+                    <td><strong>Hours Included</strong></td>
+                    <td>40 hrs</td>
+                    <td>80 hrs</td>
+                    <td>160 hrs</td>
+                </tr>
+                <tr>
+                    <td><strong>Headcount</strong></td>
+                    <td>Support Specialist</td>
+                    <td>Support Specialist<br>+ Technical Analyst</td>
+                    <td>Support Team<br>+ Account Manager</td>
+                </tr>
+                <tr>
+                    <td><strong>Coverage</strong></td>
+                    <td>Business Hours<br>(8am-6pm EST)</td>
+                    <td>Extended Hours<br>+ Proactive Monitoring</td>
+                    <td>Near 24/7<br>+ Strategic Planning</td>
+                </tr>
+                <tr>
+                    <td><strong>Best For</strong></td>
+                    <td>Low-volume, stable apps</td>
+                    <td>Growing e-commerce platforms</td>
+                    <td>High-volume, mission-critical apps</td>
+                </tr>
+                <tr>
+                    <td><strong>US Equivalent Cost</strong></td>
+                    <td>$12,000+</td>
+                    <td>$18,000+</td>
+                    <td>$35,000+</td>
+                </tr>
+                <tr>
+                    <td><strong>Monthly Savings</strong></td>
+                    <td class="savings">$7,100</td>
+                    <td class="savings">$8,900</td>
+                    <td class="savings">$18,200</td>
+                </tr>
+                <tr>
+                    <td><strong>Savings %</strong></td>
+                    <td class="savings">59%</td>
+                    <td class="savings">49%</td>
+                    <td class="savings">52%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="notes">
+        <p><strong>Overage Rate:</strong> $63/hour</p>
+        <p><strong>Surge Pricing:</strong> +50% Mexican holidays and weekends</p>
+        <br>
+        <p><strong>Smart Surge Protection:</strong> If weekly overages exceed next tier cost → automatic upgrade</p>
+        <ul style="margin-left: 1rem; margin-top: 0.5rem;">
+            <li>e.g: Essential plan using $2,800 worth → Auto-upgrade to Professional ($2,275/week)</li>
+            <li><strong>Weekly tier costs:</strong> Essential $1,225 | Professional $2,275 | Premium $4,200</li>
+        </ul>
+    </div>
+
+    <div class="recommendation">
+        <h3>Recommended Tier Option: Professional</h3>
+        <div class="why"><strong>Why?</strong> Great for small but growing marketplaces, seasonality-friendly and cost-savvy.</div>
+        <div class="details">
+            <strong>Perfect for a Flower Marketplace:</strong>
+            <ul style="margin-left: 1rem; margin-top: 0.5rem;">
+                <li>Valentine's surge → Auto-scale without breaking budget</li>
+                <li>Slow seasons → Pay minimum rates</li>
+                <li>Same timezone → Real-time customer issue resolution</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><em>This proposal is subject to execution of formal service agreement and standard terms and conditions.</em></p>
+    </div>
+</body>
+</html>
